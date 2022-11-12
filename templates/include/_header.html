@@ -1,38 +1,46 @@
 {% load static %}
 
-<nav class="navbar navbar-expand-lg fixed-top">
-  <div class="container">
+<nav class="navbar navbar-expand-xl">
+  <div class="container d-flex justify-content-between">
     <a class="navbar-brand p-1" href="{% url 'home' %}">
       <svg class="logo mt-0" width="100px" height="60px" xmlns="http://www.w3.org/2000/svg">
         <image xlink:href="{% static 'images/logo@3x.svg' %}" src="{% static 'images/logo.svg' %}" width="100px"
                height="60px"></image>
       </svg>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
-            aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse " id="navbarToggler">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Главная</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'directions' %}">Направления</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'schedule' %}">Расписание</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'subscriptions' %}">Абонементы</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'members' %}">Тренерский состав</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'reviews' %}">Отзывы</a>
-        </li>
-      </ul>
+    {#    TODO: user.is_authenticated #}
+    <div class="nav-menu d-flex order-xl-last">
+      <a class="nav-link nav-item ms-auto text-nowrap my-auto" href="{% url 'login' %}">Личный кабинет</a>
+      <button class="navbar-toggler ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
+              aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse text-nowrap " id="navbarToggler">
+      <div class="nav-inside mx-auto">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Главная</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'directions' %}">Направления</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'schedule' %}">Расписание</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'subscriptions' %}">Абонементы</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'members' %}">Тренерский состав</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'reviews' %}">Отзывы</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
