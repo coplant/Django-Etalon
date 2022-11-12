@@ -10,7 +10,7 @@
     </a>
     {#    TODO: user.is_authenticated #}
     <div class="nav-menu d-flex order-xl-last">
-      <a class="nav-link nav-item ms-auto text-nowrap my-auto" href="{% url 'login' %}">Личный кабинет</a>
+      <a class="nav-item nav-link ms-auto text-nowrap my-auto" href="{% url 'login' %}">Личный кабинет</a>
       <button class="navbar-toggler ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
               aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
 
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Главная</a>
+            <a class="nav-link" aria-current="page" href="{% url 'home' %}">Главная</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'directions' %}">Направления</a>
