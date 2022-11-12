@@ -1,0 +1,23 @@
+<svg id="Группа_1" data-name="Группа 1" xmlns="http://www.w3.org/2000/svg" width="431" height="406" viewBox="0 0 431 406">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        font-size: 100px;
+        font-family: Kinetika-Ultra, Kinetika;
+      }
+
+      .cls-3 {
+        font-size: 56px;
+        font-family: Latin;
+      }
+    </style>
+  </defs>
+  <path id="Фигура_317_1" data-name="Фигура 317 1" class="cls-1" d="M124.826,47L442,308,58,453Z" transform="translate(-31 -47)"/>
+  <text id="ЭТАЛОН_копия" data-name="ЭТАЛОН копия" class="cls-2" x="-0.378" y="249.369">ЭТАЛОН</text>
+  <text id="фитнес_студия_копия" data-name="фитнес студия копия" class="cls-3" x="1.38" y="294.808">фитнес студия</text>
+</svg>

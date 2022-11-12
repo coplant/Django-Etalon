@@ -3,11 +3,11 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse('main')
+    return render(request, template_name='main/index.html', context={})
 
 
 def directions(request):
-    return HttpResponse('directions')
+    return render(request, template_name='main/directions.html', context={'title': 'Эталон', 'request': request.META['HTTP_USER_AGENT']})
 
 
 def schedule(request):

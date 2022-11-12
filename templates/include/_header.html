@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% load static %}
 
-</body>
-</html>
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand p-1" href="{% url 'home' %}">
+      <svg class="logo mt-0" width="100px" height="60px" xmlns="http://www.w3.org/2000/svg">
+        <image xlink:href="{% static 'images/logo@3x.svg' %}" src="{% static 'images/logo.svg' %}" width="100px"
+               height="60px"></image>
+      </svg>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
+            aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarToggler">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Главная</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'directions' %}">Направления</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'schedule' %}">Расписание</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'subscriptions' %}">Абонементы</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'members' %}">Тренерский состав</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'reviews' %}">Отзывы</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
