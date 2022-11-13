@@ -6,7 +6,6 @@ from django.contrib.auth import views as auth_views
 # class Login(auth_views.LoginView):
 
 
-
 def index(request):
     # username = 'admin'
     # password = '12345'
@@ -17,25 +16,24 @@ def index(request):
     return render(request, template_name='main/index.html', context={})
 
 
-
 def directions(request):
-    return render(request, template_name='main/directions.html', context={'title': 'Эталон', 'request': request.META['HTTP_USER_AGENT']})
+    return render(request, template_name='main/directions.html', context={})
 
 
 def schedule(request):
-    return HttpResponse('schedule')
+    return render(request, template_name='main/schedule.html', context={})
 
 
 def subscriptions(request):
-    return HttpResponse('subscriptions')
+    return render(request, template_name='main/subscriptions.html', context={})
 
 
 def members(request):
-    return HttpResponse('members')
+    return render(request, template_name='main/members.html', context={})
 
 
 def reviews(request):
-    return HttpResponse('reviews')
+    return render(request, template_name='main/reviews.html', context={})
 
 
 def user(request):

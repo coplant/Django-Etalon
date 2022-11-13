@@ -11,36 +11,35 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
   <link href="{% static "css/reset.css" %}" rel="stylesheet">
-
   <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
-
   <link href="{% static "css/style.css" %}" rel="stylesheet">
   <script src="https://kit.fontawesome.com/da65841043.js" crossorigin="anonymous"></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
+
+{# <--- Header ---> #}
 {% block header %}
   {% include './include/_header.html' %}
 {% endblock header %}
 
-<div class="wrapper flex-grow-1">
-  <div class="content">
-  <div class="container py-auto my-5 overflow-hidden">
-    {% block content %}
 
+{# <--- Content ---> #}
+<div class="wrapper flex-grow-1">
+  {#  <div class="content">#}
+
+  <div class="py-auto my-5 overflow-hidden">
+    {% block content %}
     {% endblock content %}
   </div>
+  {#  </div>#}
 </div>
-</div>
 
 
-
+{# <--- Footer ---> #}
 {% block footer %}
   {% include './include/_footer.html' %}
 {% endblock footer %}
-
-
-
 <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
 </body>
 </html>

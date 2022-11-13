@@ -22,22 +22,22 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
 
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'home' %}">Главная</a>
+            <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Главная</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'directions' %}">Направления</a>
+            <a class="nav-link {% if request.resolver_match.url_name == 'directions' %}active{% endif %}" href="{% url 'directions' %}">Направления</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'schedule' %}">Расписание</a>
+            <a class="nav-link {% if request.resolver_match.url_name == 'schedule' %}active{% endif %}" href="{% url 'schedule' %}">Расписание</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'subscriptions' %}">Абонементы</a>
+            <a class="nav-link {% if request.resolver_match.url_name == 'subscriptions' %}active{% endif %}" href="{% url 'subscriptions' %}">Абонементы</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="{% url 'members' %}">Тренерский состав</a>
+            <a class="nav-link {% if request.resolver_match.url_name == 'members' %}active{% endif %}" href="{% url 'members' %}">Тренерский состав</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'reviews' %}">Отзывы</a>
+            <a class="nav-link {% if request.resolver_match.url_name == 'reviews' %}active{% endif %}" href="{% url 'reviews' %}">Отзывы</a>
           </li>
         </ul>
       </div>

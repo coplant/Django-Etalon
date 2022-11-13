@@ -10,6 +10,8 @@ urlpatterns = [
     path('subscriptions/', subscriptions, name='subscriptions'),
     path('members/', members, name='members'),
     path('reviews/', reviews, name='reviews'),
+
+
     # path('user/', user, name='user'),
     path('user/', include('django.contrib.auth.urls'), name='login')
     # path('login/', auth_views.LoginView.as_view(template_name='main/templates/registration/login.html'), name='login'),
