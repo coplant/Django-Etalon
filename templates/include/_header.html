@@ -1,7 +1,7 @@
 {% load static %}
 
-<nav class="navbar navbar-expand-xl">
-  <div class="container d-flex justify-content-between">
+<nav class="navbar navbar-expand-xl ">
+  <div class="container d-flex justify-content-between overflow-auto">
     <a class="navbar-brand p-1" href="{% url 'home' %}">
       <svg class="logo mt-0" width="100px" height="60px" xmlns="http://www.w3.org/2000/svg">
         <image xlink:href="{% static 'images/logo@3x.svg' %}" src="{% static 'images/logo.svg' %}" width="100px"
@@ -10,7 +10,7 @@
     </a>
     {#    TODO: user.is_authenticated #}
     <div class="nav-menu d-flex order-xl-last">
-      <a class="nav-item nav-link ms-auto text-nowrap my-auto" href="{% url 'login' %}">Личный кабинет</a>
+      <a class="nav-item nav-link ms-auto text-nowrap my-auto" href="{% url 'login' %}">Войти</a>
       <button class="navbar-toggler ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
               aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
