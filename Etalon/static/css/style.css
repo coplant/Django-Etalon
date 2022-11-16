@@ -60,3 +60,11 @@ body {
 .overlay {
     background-color: rgba(255, 226, 137, 0.72);
 }
+
+h2.m-card-title {
+    font-size: 30px;
+}
+
+p.card-text {
+    font-size: 24px;
+}

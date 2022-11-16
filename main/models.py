@@ -60,15 +60,15 @@ class Direction(models.Model):
 
 
 class Schedule(models.Model):
-    DAYS_OF_WEEK = (
-        (0, 'Понедельник'),
-        (1, 'Вторник'),
-        (2, 'Среда'),
-        (3, 'Четверг'),
-        (4, 'Пятница'),
-        (5, 'Суббота'),
-        (6, 'Воскресенье'),
-    )
+    DAYS_OF_WEEK = [
+        ('1', 'Понедельник'),
+        ('2', 'Вторник'),
+        ('3', 'Среда'),
+        ('4', 'Четверг'),
+        ('5', 'Пятница'),
+        ('6', 'Суббота'),
+        ('0', 'Воскресенье'),
+    ]
     direction = models.ForeignKey('Direction', on_delete=models.CASCADE, verbose_name='Направление')
     day = models.CharField(max_length=1, choices=DAYS_OF_WEEK, verbose_name='День недели')
     time = models.TimeField(verbose_name='Время')
