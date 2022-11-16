@@ -38,10 +38,6 @@ body {
 .content-container {
 }
 
-#features {
-    background-color: rgba(255, 226, 137, 0.72);
-}
-
 .footer {
     width: 100%;
     /*background-color: rgba(30, 33, 37, 0.085);*/
@@ -61,3 +57,6 @@ body {
     font-size: 50px;
 }
 
+.overlay {
+    background-color: rgba(255, 226, 137, 0.72);
+}

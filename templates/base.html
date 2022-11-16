@@ -17,24 +17,18 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
 
-
 {# <--- Header ---> #}
 {% block header %}
   {% include './include/_header.html' %}
 {% endblock header %}
 
-
 {# <--- Content ---> #}
 <div class="wrapper flex-grow-1">
-  {#  <div class="content">#}
-
-  <div class="py-auto my-5 overflow-hidden">
+  <div class="py-auto my-auto overflow-hidden">
     {% block content %}
     {% endblock content %}
   </div>
-  {#  </div>#}
 </div>
-
 
 {# <--- Footer ---> #}
 {% block footer %}

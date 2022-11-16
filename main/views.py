@@ -1,23 +1,22 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
+from django.views.generic import TemplateView, ListView
 from django.contrib.auth import views as auth_views
+
+from main.models import Direction
+
 
 # class Login(auth_views.LoginView):
 
 
-def index(request):
-    # username = 'admin'
-    # password = '12345'
-    # user = authenticate(username=username, password=password)
-    # if user is not None:
-    #     login(request, user)
-    #     print('success')
-    return render(request, template_name='main/index.html', context={})
+class MainView(TemplateView):
+    template_name = 'main/index.html'
 
 
-def directions(request):
-    return render(request, template_name='main/directions.html', context={})
+class DirectionsView(ListView):
+    template_name = 'main/directions.html'
+    model = Direction
 
 
 def schedule(request):
