@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth import views as auth_views
 
-from main.models import Direction
+from main.models import Direction, Schedule
 
 
 # class Login(auth_views.LoginView):
@@ -19,8 +19,9 @@ class DirectionsView(ListView):
     model = Direction
 
 
-def schedule(request):
-    return render(request, template_name='main/schedule.html', context={})
+class ScheduleView(ListView):
+    template_name = 'main/schedule.html'
+    model = Schedule
 
 
 def subscriptions(request):

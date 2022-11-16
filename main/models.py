@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
+from django.utils.translation import gettext as _
+from django import forms
 
 
 class User(AbstractUser):
@@ -57,12 +59,29 @@ class Direction(models.Model):
         verbose_name_plural = "Направления"
 
 
+class Days(models.Model):
+    day = models.CharField(max_length=11)
+
+    def __str__(self):
+        return self.day
+
+    class Meta:
+        verbose_name = "День"
+        verbose_name_plural = "Дней"
+
+
 class Schedule(models.Model):
     direction = models.ForeignKey('Direction', on_delete=models.CASCADE, verbose_name='Направление')
-    date = models.DateTimeField(verbose_name='Дата и время')
+    time = models.TimeField(verbose_name='Время')
+    days = models.ManyToManyField(Days, verbose_name='Дни недели')
 
     def __str__(self):
         return self.direction.title
+
+    def get_days(self):
+        return '\n'.join([item.day for item in self.days.all()])
+
+    get_days.short_description = 'Дни недели'
 
     class Meta:
         verbose_name = "Расписание"
