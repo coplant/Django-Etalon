@@ -59,29 +59,22 @@ class Direction(models.Model):
         verbose_name_plural = "Направления"
 
 
-class Days(models.Model):
-    day = models.CharField(max_length=11)
-
-    def __str__(self):
-        return self.day
-
-    class Meta:
-        verbose_name = "День"
-        verbose_name_plural = "Дней"
-
-
 class Schedule(models.Model):
+    DAYS_OF_WEEK = (
+        (0, 'Понедельник'),
+        (1, 'Вторник'),
+        (2, 'Среда'),
+        (3, 'Четверг'),
+        (4, 'Пятница'),
+        (5, 'Суббота'),
+        (6, 'Воскресенье'),
+    )
     direction = models.ForeignKey('Direction', on_delete=models.CASCADE, verbose_name='Направление')
+    day = models.CharField(max_length=1, choices=DAYS_OF_WEEK, verbose_name='День недели')
     time = models.TimeField(verbose_name='Время')
-    days = models.ManyToManyField(Days, verbose_name='Дни недели')
 
     def __str__(self):
         return self.direction.title
-
-    def get_days(self):
-        return '\n'.join([item.day for item in self.days.all()])
-
-    get_days.short_description = 'Дни недели'
 
     class Meta:
         verbose_name = "Расписание"

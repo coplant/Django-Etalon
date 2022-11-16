@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Review, User, Schedule, Subscription, Direction, Days
+from .models import Review, User, Schedule, Subscription, Direction
 
 
 class ReviewAdmin(admin.ModelAdmin):
@@ -16,11 +16,11 @@ class UserAdmin(admin.ModelAdmin):
 
 
 class ScheduleAdmin(admin.ModelAdmin):
-    list_display = ('id', 'direction', 'get_days', 'time')
+    list_display = ('id', 'direction', 'day', 'time')
     list_display_links = ('id',)
-    search_fields = ('direction', 'time')
-    list_editable = ('time',)
-    list_filter = ('direction', 'days', 'time')
+    search_fields = ('direction', 'day')
+    list_filter = ('direction', 'day', 'time')
+    list_editable = ('direction', 'day', 'time')
 
 
 class SubscriptionAdmin(admin.ModelAdmin):
@@ -36,13 +36,8 @@ class DirectionAdmin(admin.ModelAdmin):
     search_fields = ('title',)
 
 
-class DaysAdmin(admin.ModelAdmin):
-    ordering = ['id']
-
-
 admin.site.register(Review, ReviewAdmin)
 admin.site.register(User, UserAdmin)
-admin.site.register(Days, DaysAdmin)
 admin.site.register(Schedule, ScheduleAdmin)
 admin.site.register(Direction, DirectionAdmin)
 admin.site.register(Subscription, SubscriptionAdmin)
