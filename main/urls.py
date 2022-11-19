@@ -8,8 +8,8 @@ urlpatterns = [
     path('directions/', DirectionsView.as_view(), name='directions'),
     path('schedule/', ScheduleView.as_view(), name='schedule'),
     path('reviews/', ReviewView.as_view(), name='reviews'),
+    path('subscriptions/', SubscriptionView.as_view(), name='subscriptions'),
 
-    path('subscriptions/', subscriptions, name='subscriptions'),
     path('members/', members, name='members'),
 
 

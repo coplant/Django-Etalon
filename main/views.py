@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth import views as auth_views
 
-from main.models import Direction, Schedule, Review
+from main.models import Direction, Schedule, Review, Subscription
 
 
 # class Login(auth_views.LoginView):
@@ -30,16 +30,13 @@ class ReviewView(ListView):
     paginate_by = 10
 
 
-def subscriptions(request):
-    return render(request, template_name='main/subscriptions.html', context={})
+class SubscriptionView(ListView):
+    template_name = 'main/subscriptions.html'
+    model = Subscription
 
 
 def members(request):
     return render(request, template_name='main/members.html', context={})
-
-
-def reviews(request):
-    return render(request, template_name='main/reviews.html', context={})
 
 
 def user(request):

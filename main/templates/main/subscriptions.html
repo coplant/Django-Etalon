@@ -1,4 +1,37 @@
 {% extends 'base.html' %}
 {% block title %}
- Абонементы - {{ block.super }}
+  Абонементы - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+  {% now "w" as current_day %}
+  <div class="py-5 px-auto">
+    <div class="container">
+      <div class="row gx-5 justify-content-between">
+        <div class="col-lg-5 py-5 mx-1 align-self-baseline">
+          <h2 class="fw-bolder m-card-title text-center">УТРО</h2>
+          {% for subscription in subscription_list %}
+            {% if subscription.time == "0" %}
+              <div class="d-flex flex-row justify-content-between">
+                <p class="lead fw-normal px-auto mb-1 card-text">{{ subscription.sessions }} занятий</p>
+                <p class="lead fw-normal px-auto mb-1 card-text">{{ subscription.price }} рублей</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        <div class="col-lg-5 py-5 mx-1 align-self-baseline">
+          <h2 class="fw-bolder m-card-title text-center">ВЕЧЕР</h2>
+          {% for subscription in subscription_list %}
+            {% if subscription.time == "1" %}
+              <div class="d-flex flex-row justify-content-between">
+                <p class="lead fw-normal px-auto mb-1 card-text">{{ subscription.sessions }} занятий</p>
+                <p class="lead fw-normal px-auto mb-1 card-text">{{ subscription.price }} рублей</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
