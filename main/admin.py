@@ -24,10 +24,11 @@ class ScheduleAdmin(admin.ModelAdmin):
 
 
 class SubscriptionAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'price')
-    list_display_links = ('id', 'title')
-    search_fields = ('title', 'price')
-    list_editable = ('price',)
+    list_display = ('id', 'time', 'sessions', 'price')
+    list_display_links = ('id',)
+    search_fields = ('time',)
+    list_filter = ('time',)
+    list_editable = ('time', 'sessions', 'price')
 
 
 class DirectionAdmin(admin.ModelAdmin):

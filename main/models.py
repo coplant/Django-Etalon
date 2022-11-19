@@ -31,13 +31,16 @@ class Review(models.Model):
 
 
 class Subscription(models.Model):
-    title = models.CharField(max_length=150, verbose_name='Наименование')
-    content = models.TextField(verbose_name='Содержание')
+    TIME_OF_DAY = [
+        ('0', 'Утро'),
+        ('1', 'Вечер')
+    ]
+    time = models.CharField(max_length=1, choices=TIME_OF_DAY, verbose_name='Время')
+    sessions = models.IntegerField(blank=True, verbose_name='Количество')
     price = models.IntegerField(verbose_name='Стоимость')
-    photo = models.ImageField(upload_to='subscription/%Y/%m/%d/', blank=True, verbose_name='Фото')
 
     def __str__(self):
-        return self.title
+        return f'{self.time} - {self.sessions} занятий - {self.price}'
 
     class Meta:
         verbose_name = "Абонемент"
