@@ -27,8 +27,10 @@
   <div class="py-auto my-auto overflow-hidden">
     {% block content %}
     {% endblock content %}
+    {% include './include/_paginator.html' %}
   </div>
 </div>
+
 
 {# <--- Footer ---> #}
 {% block footer %}

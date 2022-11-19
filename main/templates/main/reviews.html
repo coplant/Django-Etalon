@@ -1,4 +1,27 @@
 {% extends 'base.html' %}
 {% block title %}
- Отзывы - {{ block.super }}
+  Отзывы - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+  <div class="py-5 px-auto mt-5">
+    <div class="container">
+      <div class="d-flex flex-column flex-grow-1">
+        <form class="mb-4" method="post" action="{% url 'reviews' %}">
+          {% csrf_token %}
+          <textarea id="review-form" class="form-control" rows="4" maxlength="750"
+                    placeholder="Поделитесь своими впечатлениями..."></textarea>
+          <label for="review-form"></label>
+        </form>
+        {% for review in review_list %}
+          <div class="container my-2">
+            <h5 class="fw-normal my-0">{{ review }}</h5>
+            <h6 class="fw-light">{{ review.date|date:"d E y H:i" }}</h6>
+            <p class="fw-normal m-card-text">{{ review.content }}</p>
+          </div>
+          <hr>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 {% endblock %}

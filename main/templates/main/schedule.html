@@ -12,24 +12,20 @@
           <h2 class="fw-bolder m-card-title text-center">ПОНЕДЕЛЬНИК / СРЕДА / ПЯТНИЦА</h2>
           {% for schedule in schedule_list %}
             {% if schedule.day in '135' %}
-              <p class="lead fw-normal ms-5 mb-1 card-text">{{ schedule.time }} - {{ schedule }}</p>
+              <p class="lead fw-normal ms-5 mb-1 card-text">{{ schedule.time|time:"H:i" }} - {{ schedule }}</p>
             {% endif %}
           {% endfor %}
         </div>
-
 
         <div class="col-lg-6 py-5 align-self-baseline {% if current_day in '24' %}rounded-3 overlay{% endif %}">
           <h2 class="fw-bolder m-card-title text-center">ВТОРНИК / ЧЕТВЕРГ</h2>
           {% for schedule in schedule_list %}
             {% if schedule.day in '24' %}
-              <p class="lead fw-normal ms-5 mb-0 card-text">{{ schedule.time }} - {{ schedule }}</p>
+              <p class="lead fw-normal ms-5 mb-0 card-text">{{ schedule.time|time:"H:i" }} - {{ schedule }}</p>
             {% endif %}
           {% endfor %}
         </div>
       </div>
     </div>
   </div>
-
-
-
 {% endblock %}

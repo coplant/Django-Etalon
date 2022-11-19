@@ -7,9 +7,10 @@ urlpatterns = [
     path('', MainView.as_view(), name='home'),
     path('directions/', DirectionsView.as_view(), name='directions'),
     path('schedule/', ScheduleView.as_view(), name='schedule'),
+    path('reviews/', ReviewView.as_view(), name='reviews'),
+
     path('subscriptions/', subscriptions, name='subscriptions'),
     path('members/', members, name='members'),
-    path('reviews/', reviews, name='reviews'),
 
 
     # path('user/', user, name='user'),
