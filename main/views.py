@@ -5,6 +5,7 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import redirect
 from django.contrib.auth import login, logout
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import TemplateView, ListView, CreateView, DeleteView, UpdateView
 from django.views.generic.list import MultipleObjectMixin
 from django.utils.timezone import utc
@@ -12,39 +13,40 @@ from main.forms import RegisterUserForm, LoginUserForm, ReviewForm
 from main.models import Direction, Schedule, Review, Subscription, User
 
 
-class DeleteReview(DeleteView):
+class DeleteReview(View):
     model = Review
-    success_url = reverse_lazy('reviews')
-    template_name_suffix = ''
-    # template_name = 'main/review_confirm_delete.html'
+    form_class = ReviewForm
 
     def get(self, request, *args, **kwargs):
-        review = Review.objects.get(pk=kwargs['pk'])
-        if review.author.pk != self.request.user.pk:
-            raise PermissionDenied()
-        return self.post(request, *args, **kwargs)
+        if request.user.is_authenticated:
+            review = Review.objects.get(pk=kwargs['pk'])
+            if review.author.pk != self.request.user.pk:
+                # raise PermissionDenied()
+                return redirect('reviews')
 
-        # return self.post(request, *args, **kwargs)
+            review.delete()
+        return redirect('reviews')
 
 
 class UpdateReview(UpdateView):
     model = Review
-    template_name = 'main/reviews.html'
+    template_name = 'main/edit_review.html'
     form_class = ReviewForm
     success_url = reverse_lazy('reviews')
 
-    def post(self, request, *args, **kwargs):
-        print(self.kwargs['pk'])
+    def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            form = self.get_form()
-            if form.is_valid():
-                review = Review.objects.get(pk=self.kwargs['pk'])
-                print(review.content)
-                # content.
-                # new = form.save(commit=False)
-                # obj.author = User.objects.get(pk=request.user.id)
-                # obj.date = datetime.utcnow().replace(tzinfo=utc)
-                # obj.save()
+            review = Review.objects.get(pk=kwargs['pk'])
+            if review.author.pk != self.request.user.pk:
+                raise PermissionDenied()
+        return super(UpdateReview, self).get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            review = Review.objects.get(pk=self.kwargs['pk'])
+            review.content = form.cleaned_data['content']
+            review.save()
         return redirect('reviews')
 
 
