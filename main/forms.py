@@ -3,8 +3,17 @@ from django.contrib.auth import validators
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.password_validation import validate_password
 
-from .models import User
+from .models import User, Review
 from django.core.exceptions import ValidationError
+
+
+class ReviewForm(forms.ModelForm):
+    content = forms.CharField(label='Поделитесь своими впечатлениями', widget=forms.Textarea(
+        attrs={'class': 'form-input form-control', 'style': 'height: 10rem', 'maxlength': '750'}))
+
+    class Meta:
+        model = Review
+        fields = ('content',)
 
 
 class LoginUserForm(AuthenticationForm):
@@ -31,7 +40,8 @@ class RegisterUserForm(UserCreationForm):
     password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput(
         attrs={'class': 'form-input form-control', 'placeholder': 'Пароль', 'autocomplete': 'new-password'}))
     password2 = forms.CharField(label='Пароль (подтверждение)', widget=forms.PasswordInput(
-        attrs={'class': 'form-input form-control', 'placeholder': 'Пароль (подтверждение)', 'autocomplete': 'new-password'}))
+        attrs={'class': 'form-input form-control', 'placeholder': 'Пароль (подтверждение)',
+               'autocomplete': 'new-password'}))
 
     class Meta:
         model = User

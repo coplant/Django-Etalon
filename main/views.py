@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import AccessMixin
 from django.contrib.auth.views import LoginView
@@ -7,8 +9,9 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, CreateView
 from django.contrib.auth import views as auth_views
-
-from main.forms import RegisterUserForm, LoginUserForm
+from django.views.generic.list import MultipleObjectMixin
+from django.utils.timezone import utc
+from main.forms import RegisterUserForm, LoginUserForm, ReviewForm
 from main.models import Direction, Schedule, Review, Subscription, User
 
 
@@ -29,10 +32,29 @@ class ScheduleView(ListView):
     model = Schedule
 
 
-class ReviewView(ListView):
+class AddReview(MultipleObjectMixin, CreateView):
+    form_class = ReviewForm
     template_name = 'main/reviews.html'
-    model = Review
     paginate_by = 10
+
+    def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            form = self.get_form()
+            for item in form:
+                print(item)
+            if form.is_valid():
+                obj = form.save(commit=False)
+                obj.author = User.objects.get(pk=request.user.id)
+                obj.date = datetime.utcnow().replace(tzinfo=utc)
+                print(obj)
+                obj.save()
+            else:
+                print(form)
+        return redirect('reviews')
+
+    def get_context_data(self, **kwargs):
+        kwargs['object_list'] = Review.objects.order_by('-date')
+        return super().get_context_data(**kwargs)
 
 
 class SubscriptionView(ListView):
