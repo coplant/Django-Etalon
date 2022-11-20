@@ -9,13 +9,19 @@
       <div class="container px-5 my-5">
         <div class="row gx-5 align-items-center">
           <div class="col-lg-6 d-flex align-items-center justify-content-center {% cycle '' 'order-first order-lg-last' as direction %}">
-            <img class="img-fluid rounded mb-5 mb-lg-0 justify-content-center"
-                 src="{{ item.photo.url }}"
-                 alt="{{ item.title }}"/>
+            {% if item.photo %}
+              <img class="cover rounded mb-5 mb-lg-0 justify-content-center"
+                   src="{{ item.photo.url }}"
+                   alt="{{ item.title }}" width="400" height="500"/>
+            {% else %}
+              <img class="cover rounded mb-5 mb-lg-0 justify-content-center"
+                   src="https://imgholder.ru/400x500/ffe289/1e2125&text=Изображение+временно+отсутствует&font=kelson"
+                   alt="{{ item.title }}" width="400" height="500"/>
+            {% endif %}
           </div>
           <div class="col-lg-6">
             <h2 class="fw-bolder">{{ item.title|upper }}</h2>
-            <p class="lead fw-normal text-muted mb-0">{{ item.content }}</p>
+            <p class="lead fw-normal text-opacity-75 text-black mb-0">{{ item.content }}</p>
           </div>
         </div>
       </div>

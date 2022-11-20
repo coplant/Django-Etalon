@@ -14,7 +14,7 @@ urlpatterns = [
     path('members/', CoachView.as_view(), name='members'),
 
 
-    # path('user/', user, name='user'),
+
     path('logout/', logout_user, name='logout'),
     # path('login/', auth_views.LoginView.as_view(template_name='main/templates/registration/login.html'), name='login'),
     # path('login/', auth_views.LoginView.as_view(template_name=''), name='login'),

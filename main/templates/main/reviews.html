@@ -14,9 +14,14 @@
             <textarea id="review-form" class="form-control" rows="4" maxlength="750"
                       placeholder="Поделитесь своими впечатлениями..."></textarea>
             <label for="review-form"></label>
+            <div class="button-container d-flex flex-md-row-reverse">
+              <button class="text-dark btn btn-primary btn-lg overlay flex-fill flex-md-grow-0" type="submit">
+                Оставить отзыв
+              </button>
+            </div>
           </form>
         {% else %}
-          <h4 class="fw-bold my-3">Чтобы оставить отзыв, нужно авторизоваться</h4>
+          <h4 class="fw-bold my-3">Авторизуйтесь, чтобы оставить отзыв</h4>
         {% endif %}
         {% for review in review_list %}
           <div class="my-2">

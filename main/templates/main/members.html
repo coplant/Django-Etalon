@@ -1,4 +1,30 @@
 {% extends 'base.html' %}
 {% block title %}
- Тренерский состав - {{ block.super }}
+  Тренерский состав - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+  {% for user in user_list %}
+    <div class="py-5 {% cycle '' 'overlay' as color %}" id="scroll-target">
+      <div class="container px-5 my-5">
+        <div class="row gx-5 align-items-center">
+          <div class="col-lg-6 d-flex align-items-center justify-content-center {% cycle '' 'order-first order-lg-last' as direction %}">
+            {% if user.photo %}
+              <img class="cover rounded mb-5 mb-lg-0 justify-content-center"
+                   src="{{ user.photo.url }}"
+                   alt="{{ user }}" width="400" height="500"/>
+            {% else %}
+              <img class="cover rounded mb-5 mb-lg-0 justify-content-center"
+                   src="https://imgholder.ru/400x500/ffe289/1e2125&text=Изображение+временно+отсутствует&font=kelson"
+                   alt="{{ user }}" width="400" height="500"/>
+            {% endif %}
+          </div>
+          <div class="col-lg-6">
+            <h2 class="fw-bolder">{{ user|upper }}</h2>
+            <p class="lead fw-normal text-opacity-75 text-black mb-0">{{ user.bio|linebreaks }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
 {% endblock %}

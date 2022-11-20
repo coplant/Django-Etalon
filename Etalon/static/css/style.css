@@ -21,6 +21,12 @@ body {
     font-weight: 500;
 }
 
+img.cover {
+    object-fit: cover;
+    /*width: 400px;*/
+    /*height: 500px;*/
+    object-position: 50% 50%;
+}
 
 .navbar {
     background-color: #f7db4d;
@@ -122,7 +128,6 @@ hr {
     display: flex;
     justify-content: center;
 }
-
 
 .nav.nav-pills .nav-link {
     outline: none;

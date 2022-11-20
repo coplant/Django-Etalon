@@ -9,7 +9,7 @@ from django.views.generic import TemplateView, ListView, CreateView
 from django.contrib.auth import views as auth_views
 
 from main.forms import RegisterUserForm, LoginUserForm
-from main.models import Direction, Schedule, Review, Subscription
+from main.models import Direction, Schedule, Review, Subscription, User
 
 
 # class Login(auth_views.LoginView):
@@ -42,7 +42,10 @@ class SubscriptionView(ListView):
 
 class CoachView(ListView):
     template_name = 'main/members.html'
-    # model = U
+    model = User
+
+    def get_queryset(self):
+        return User.objects.filter(is_coach=True)
 
 
 class RegisterUser(CreateView):

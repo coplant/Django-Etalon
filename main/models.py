@@ -1,10 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.urls import reverse
 
 
 class User(AbstractUser):
     photo = models.ImageField(upload_to='user/%Y/%m/%d/', blank=True, verbose_name='Фото')
+    bio = models.TextField(verbose_name='Биография', blank=True)
     is_coach = models.BooleanField(default=False, verbose_name='Статус тренера')
 
     def __str__(self):

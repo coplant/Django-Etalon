@@ -3,6 +3,7 @@
   <div class="content-container py-5">
     <div class="container px-5">
       <div class="rounded-3 py-5 px-4 px-md-5 mb-5">
+
         {% block auth_navbar %}
           <div class="text-center mb-5">
             <h2 class="fw-bolder m-card-title text-center">{% block form_title %}{% endblock form_title %}</h2>
@@ -21,7 +22,7 @@
             {% block form %}
               <form method="post">
                 {% csrf_token %}
-{#                {{ form.non_field_errors }}#}
+
                 {% if form.non_field_errors %}
                   <div class="non-field-errors">
                     {% for error in form.non_field_errors %}
@@ -41,6 +42,7 @@
                     {% endif %}
                   </div>
                 {% endfor %}
+
                 <div class="d-grid">
                   <button class="text-dark btn btn-primary btn-lg overlay" id="submitButton" type="submit">
                     {% block button_title %}{% endblock button_title %}
@@ -53,7 +55,4 @@
       </div>
     </div>
   </div>
-
-
-
 {% endblock content %}
