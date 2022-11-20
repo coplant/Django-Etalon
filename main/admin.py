@@ -16,11 +16,11 @@ class UserAdmin(admin.ModelAdmin):
 
 
 class ScheduleAdmin(admin.ModelAdmin):
-    list_display = ('id', 'direction', 'day', 'time')
+    list_display = ('id', 'direction', 'day', 'time', 'notes')
     list_display_links = ('id',)
     search_fields = ('direction', 'day')
     list_filter = ('direction', 'day', 'time')
-    list_editable = ('direction', 'day', 'time')
+    list_editable = ('direction', 'day', 'time', 'notes')
 
 
 class SubscriptionAdmin(admin.ModelAdmin):
@@ -32,9 +32,10 @@ class SubscriptionAdmin(admin.ModelAdmin):
 
 
 class DirectionAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
+    list_display = ('id', 'title', 'is_visible')
     list_display_links = ('id', 'title')
     search_fields = ('title',)
+    list_editable = ('is_visible',)
 
 
 admin.site.register(Review, ReviewAdmin)

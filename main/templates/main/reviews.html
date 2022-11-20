@@ -47,7 +47,13 @@
           <div class="my-2">
             <h5 class="fw-normal my-0">{{ review }}</h5>
             <h6 class="fw-light">{{ review.date|date:"d E y H:i" }}</h6>
-            <p class="fw-normal m-card-text">{{ review.content }}</p>
+            <p class="fw-normal m-card-text my-auto">{{ review.content }}</p>
+            {% if review.author.pk == user.pk %}
+              <span class="">
+                <a class="delete-link" href="{% url 'update' review.pk %}">Изменить</a>
+                <a class="delete-link" href="{% url 'delete' review.pk %}">Удалить</a>
+              </span>
+            {% endif %}
           </div>
           <hr>
         {% endfor %}

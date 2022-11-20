@@ -1,21 +1,51 @@
 from datetime import datetime
 
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.mixins import AccessMixin
 from django.contrib.auth.views import LoginView
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponse
+from django.core.exceptions import PermissionDenied
+from django.shortcuts import redirect
+from django.contrib.auth import login, logout
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, ListView, CreateView
-from django.contrib.auth import views as auth_views
+from django.views.generic import TemplateView, ListView, CreateView, DeleteView, UpdateView
 from django.views.generic.list import MultipleObjectMixin
 from django.utils.timezone import utc
 from main.forms import RegisterUserForm, LoginUserForm, ReviewForm
 from main.models import Direction, Schedule, Review, Subscription, User
 
 
-# class Login(auth_views.LoginView):
+class DeleteReview(DeleteView):
+    model = Review
+    success_url = reverse_lazy('reviews')
+    template_name_suffix = ''
+    # template_name = 'main/review_confirm_delete.html'
+
+    def get(self, request, *args, **kwargs):
+        review = Review.objects.get(pk=kwargs['pk'])
+        if review.author.pk != self.request.user.pk:
+            raise PermissionDenied()
+        return self.post(request, *args, **kwargs)
+
+        # return self.post(request, *args, **kwargs)
+
+
+class UpdateReview(UpdateView):
+    model = Review
+    template_name = 'main/reviews.html'
+    form_class = ReviewForm
+    success_url = reverse_lazy('reviews')
+
+    def post(self, request, *args, **kwargs):
+        print(self.kwargs['pk'])
+        if request.user.is_authenticated:
+            form = self.get_form()
+            if form.is_valid():
+                review = Review.objects.get(pk=self.kwargs['pk'])
+                print(review.content)
+                # content.
+                # new = form.save(commit=False)
+                # obj.author = User.objects.get(pk=request.user.id)
+                # obj.date = datetime.utcnow().replace(tzinfo=utc)
+                # obj.save()
+        return redirect('reviews')
 
 
 class MainView(TemplateView):
@@ -25,6 +55,9 @@ class MainView(TemplateView):
 class DirectionsView(ListView):
     template_name = 'main/directions.html'
     model = Direction
+
+    def get_queryset(self):
+        return Direction.objects.filter(is_visible=True)
 
 
 class ScheduleView(ListView):
@@ -40,16 +73,11 @@ class AddReview(MultipleObjectMixin, CreateView):
     def post(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             form = self.get_form()
-            for item in form:
-                print(item)
             if form.is_valid():
                 obj = form.save(commit=False)
                 obj.author = User.objects.get(pk=request.user.id)
                 obj.date = datetime.utcnow().replace(tzinfo=utc)
-                print(obj)
                 obj.save()
-            else:
-                print(form)
         return redirect('reviews')
 
     def get_context_data(self, **kwargs):

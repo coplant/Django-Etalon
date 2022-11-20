@@ -12,7 +12,8 @@
           <h2 class="fw-bolder m-card-title text-center">ПОНЕДЕЛЬНИК / СРЕДА / ПЯТНИЦА</h2>
           {% for schedule in schedule_list %}
             {% if schedule.day in '135' %}
-              <p class="lead fw-normal ms-5 mb-1 card-text">{{ schedule.time|time:"H:i" }} - {{ schedule }}</p>
+              <p class="lead fw-normal ms-5 mb-1 card-text">{{ schedule.time|time:"H:i" }}
+                - {{ schedule }} {{ schedule.notes }}</p>
             {% endif %}
           {% endfor %}
         </div>
@@ -21,7 +22,8 @@
           <h2 class="fw-bolder m-card-title text-center">ВТОРНИК / ЧЕТВЕРГ</h2>
           {% for schedule in schedule_list %}
             {% if schedule.day in '24' %}
-              <p class="lead fw-normal ms-5 mb-0 card-text">{{ schedule.time|time:"H:i" }} - {{ schedule }}</p>
+              <p class="lead fw-normal ms-5 mb-0 card-text">{{ schedule.time|time:"H:i" }}
+                - {{ schedule }} {{ schedule.notes }}</p>
             {% endif %}
           {% endfor %}
         </div>

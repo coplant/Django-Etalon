@@ -8,7 +8,9 @@ class User(AbstractUser):
     is_coach = models.BooleanField(default=False, verbose_name='Статус тренера')
 
     def __str__(self):
-        return f'{self.first_name} {self.last_name}'
+        name = f'{self.first_name} {self.last_name}' if any(
+            [self.first_name, self.last_name]) else self.username
+        return name
 
     class Meta:
         verbose_name = "Пользователь"
@@ -51,8 +53,9 @@ class Subscription(models.Model):
 
 class Direction(models.Model):
     title = models.CharField(max_length=150, verbose_name='Направление')
-    content = models.TextField(verbose_name='Содержание')
+    content = models.TextField(verbose_name='Содержание', blank=True)
     photo = models.ImageField(upload_to='direction/%Y/%m/%d/', blank=True, verbose_name='Фото')
+    is_visible = models.BooleanField(default=True, verbose_name='Отображение')
 
     def __str__(self):
         return self.title
@@ -73,6 +76,7 @@ class Schedule(models.Model):
         ('0', 'Воскресенье'),
     ]
     direction = models.ForeignKey('Direction', on_delete=models.CASCADE, verbose_name='Направление')
+    notes = models.CharField(max_length=50, blank=True, verbose_name='Примечание')
     day = models.CharField(max_length=1, choices=DAYS_OF_WEEK, verbose_name='День недели')
     time = models.TimeField(verbose_name='Время')
 

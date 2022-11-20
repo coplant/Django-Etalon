@@ -12,7 +12,7 @@
                  href="{% url 'login' %}">Вход</a>
               <a class="text-dark text-sm-center nav-link{% if request.resolver_match.url_name == 'register' %} active{% endif %}"
                  href="{% url 'register' %}">Регистрация</a>
-              <a class="text-dark text-sm-center nav-link" href="#">Восстановление пароля</a>
+{#              <a class="text-dark text-sm-center nav-link" href="#">Восстановление пароля</a>#}
             </nav>
           </div>
         {% endblock auth_navbar %}
