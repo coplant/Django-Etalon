@@ -22,7 +22,7 @@ class Review(models.Model):
     content = models.TextField(verbose_name='Содержание')
 
     def __str__(self):
-        return f'{self.author.first_name} {self.author.last_name}'
+        return f'{self.author}'
 
     class Meta:
         verbose_name = "Отзыв"
