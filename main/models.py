@@ -22,7 +22,9 @@ class Review(models.Model):
     content = models.TextField(verbose_name='Содержание')
 
     def __str__(self):
-        return f'{self.author}'
+        name = f'{self.author.first_name} {self.author.last_name}' if any(
+            [self.author.first_name, self.author.last_name]) else self.author.username
+        return name
 
     class Meta:
         verbose_name = "Отзыв"
