@@ -11,14 +11,15 @@
       <div class="row gx-5 align-items-center justify-content-center">
         <div class="col-lg-8 col-xl-7 col-xxl-6">
           <div class="my-5 text-center text-xl-start">
-            <h1 class="display-5 fw-bolder text-dark mb-2">Заголовок главной страницы</h1>
-            <p class="lead fw-normal text-dark-50 mb-4">Также как начало повседневной работы по формированию позиции
-              является качественно новой ступенью существующих финансовых и административных условий. Картельные сговоры
-              не допускают ситуации, при которой явные призн</p>
+            <h1 class="display-5 fw-bolder text-dark mb-2">{{ 'Фитнес студия "Эталон"'|upper }}</h1>
+            <p class="lead fw-normal text-dark-50 mb-4">В нашей студии вы полюбите фитнес без вреда для здоровья.
+              Подтянутая фигура - результат регулярных тренировок и правильного питания. Похудение, подвижность
+              суставов, здоровая спина - мы подберем подходящие тренировки для каждого! Опытные и внимательные тренеры
+              проводят групповые тренировки по различным направлениям.</p>
           </div>
         </div>
         <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="cover rounded-3 my-5"
-                                                                           src="https://imgholder.ru/600x400/ffe289/1e2125&text=img+600х400&font=kelson"
+                                                                           src="{% static 'images/index/mainpage.jpg' %}"
                                                                            alt="Эталон спорт" height="400px"
                                                                            width="600px"/></div>
       </div>
@@ -28,24 +29,20 @@
   <div class="container-fluid py-5 overlay">
     <div class="container px-5 my-5">
       <div class="row gx-5">
-        <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">Какая то красивая фраза</h2></div>
+        <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">{{ 'Больше, чем фитнес. Попробуйте!'|upper }}</h2></div>
         <div class="col-lg-8">
           <div class="row gx-5 row-cols-1 row-cols-md-2">
             <div class="col mb-5 h-100">
-              <h2 class="h5">Заголовок</h2>
-              <p class="mb-0">Немного текста в заголовке. Чуть больше чтобы было красиво.</p>
+              <h2 class="lead fw-normal">Индивидуальный подход в групповых тренировках</h2>
             </div>
             <div class="col mb-5 h-100">
-              <h2 class="h5">Заголовок</h2>
-              <p class="mb-0">Немного текста в заголовке. Чуть больше чтобы было красиво.</p>
+              <h2 class="lead fw-normal">Супер жиросжигание на Power Fit</h2>
             </div>
             <div class="col mb-5 mb-md-0 h-100">
-              <h2 class="h5">Заголовок</h2>
-              <p class="mb-0">Немного текста в заголовке. Чуть больше чтобы было красиво.</p>
+              <h2 class="lead fw-normal">Фитнес для здоровья и с удовольствием</h2>
             </div>
             <div class="col h-100">
-              <h2 class="h5">Заголовок</h2>
-              <p class="mb-0">Немного текста в заголовке. Чуть больше чтобы было красиво.</p>
+              <h2 class="lead fw-normal">Избавление от боли на Mind&Body</h2>
             </div>
           </div>
         </div>
@@ -54,11 +51,11 @@
   </div>
 
   <div class="py-5">
-    <div class="container px-1 my-5">
+    <div class="container px-1 my-3">
       <div class="row gx-5 justify-content-center">
         <div class="col-lg-10 col-xl-7">
           <div class="text-center">
-            <div class="fs-4 mb-4 fst-italic">"Дороже всего на свете нам обходится здоровье, если мы не начнем
+            <div class="fs-5 mb-4 fst-italic">"Дороже всего на свете нам обходится здоровье, если мы не начнем
               заниматься физкультурой сегодня, то завтра расходы на лекарство будут намного больше, чем покупка одежды и
               абонемента в фитнес зал сейчас."
             </div>

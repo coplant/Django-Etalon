@@ -16,3 +16,6 @@ urlpatterns = [
     path('reviews/<int:pk>/update/', UpdateReview.as_view(), name='update'),
     path('logout/', logout_user, name='logout'),
 ]
+
+
+
